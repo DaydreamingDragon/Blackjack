@@ -50,15 +50,14 @@ while True:
     if playerTotal == 21 and dealerTotal != 21:
         playerMoney += bettingMoney
         print(f"You win!  Your total is now: ${playerMoney}")
-        if keepGoing() == False:
-            print(f"Session ended. You walked away with: ${playerMoney}")
-            quit()
+        keepGoing(playerMoney)
     elif playerTotal < 21 and dealerTotal == 21:
         playerMoney -= bettingMoney
         print(f"You lost!  The dealer's second card was {dealerCard}.  Your total is now: ${playerMoney}")
-        if keepGoing() == False:
-            print(f"Session ended. You walked away with: ${playerMoney}")
-            quit()
+        keepGoing(playerMoney)
+    elif playerTotal == 21 and dealerTotal == 21:
+        print(f"You and the dealer both got 21!  The dealer's second card was {dealerCard}.  Your bet was returned.")
+        keepGoing(playerMoney)
 
     print(f"Once again, your total is {playerTotal}")
 
@@ -71,7 +70,9 @@ while True:
                 print("Please say hit or stand!")
         if hitOrStand == "hit":
             playerCard = drawCard(deck)
+            print(f"You hit.  You draw a {playerCard}.")
             playerTotal += calculateValue(playerCard, playerTotal)
+            print(f"Your total is now: {playerTotal}.")
             deck.remove(playerCard)
         else:
             print(f"You stood.  Your total is: {playerTotal}")
@@ -82,4 +83,18 @@ while True:
         playerMoney -= bettingMoney
         print(f"Your balance is now: ${playerMoney}.")
 
-# Re commit 
+    print(f"The dealer flips over their second card.  It's a {dealerCard}.")
+
+    while dealerTotal <= 18:
+        dealerCard = drawCard(deck)
+        print(f"The dealer draws another card.  It's a {dealerCard}! The dealer's total is now {dealerTotal}. ")
+        dealerTotal += calculateValue(dealerCard, dealerTotal)
+
+    if dealerTotal == 21:
+        playerMoney -= bettingMoney
+        print(f"You lost! Your balance is now: ${playerMoney}")
+        keepGoing(playerMoney)
+    elif dealerTotal > 21:
+        playerMoney += bettingMoney
+        print(f"You won! Your balance is now: ${playerMoney}")
+        keepGoing(playerMoney)
