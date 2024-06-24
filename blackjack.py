@@ -42,3 +42,25 @@ while i <= 2:
 
     i += 1
     time.sleep(1)
+
+print(f"Once again, your total is {playerTotal}")
+
+while playerTotal <= 21:
+    while True:
+        hitOrStand = input("Would you like to hit or stand?: ")
+        if hitOrStand == "hit" or hitOrStand == "stand":
+            break
+        else:
+            print("Please say hit or stand!")
+    if hitOrStand == "hit":
+        playerCard = drawCard(deck)
+        playerTotal += calculateValue(playerCard, playerTotal)
+        deck.remove(playerCard)
+    else:
+        print(f"You stood.  Your total is: {playerTotal}")
+
+if playerTotal > 21:
+    print(f"You busted!  You lost: {bettingMoney}")
+    playerMoney -= bettingMoney
+    print(f"Your balance is now: ${playerMoney}.")
+
