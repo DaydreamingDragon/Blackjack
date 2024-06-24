@@ -1,5 +1,6 @@
 import random
 
+# List of cards in deck
 cards = ["ace", "ace", "ace", "ace",
          "king", "king", "king", "king",
          "queen", "queen", "queen", "queen",
@@ -15,10 +16,11 @@ cards = ["ace", "ace", "ace", "ace",
          2, 2, 2, 2
          ]
 
+# Calculate the value of a card
 def calculateValue(card, total):
     if card == "ace":
         total += 11
-        if total > 21:
+        if total > 21: # Takes into account that aces can be worth 1 or 11
             return 1
         else:
             return 11
@@ -27,10 +29,12 @@ def calculateValue(card, total):
     else: 
         return card
 
+# Randomly draw a card from the deck
 def drawCard(deck):
     card = random.randint(0, (len(deck) - 1))
     return deck[card]
 
+# Ask the player if they want to keep playing
 def keepGoing(money):
     while True:
         decision = input("Would you like to play again?  Type n for no and anything else for yes: ")
