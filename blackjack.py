@@ -49,7 +49,13 @@ while True:
 
     if playerTotal == 21 and dealerTotal != 21:
         playerMoney += bettingMoney
-        print(f"You win!  Your total is: {playerMoney}")
+        print(f"You win!  Your total is now: ${playerMoney}")
+        if keepGoing() == False:
+            print(f"Session ended. You walked away with: ${playerMoney}")
+            quit()
+    elif playerTotal < 21 and dealerTotal == 21:
+        playerMoney -= bettingMoney
+        print(f"You lost!  Your total is now: ${playerMoney}")
         if keepGoing() == False:
             print(f"Session ended. You walked away with: ${playerMoney}")
             quit()
