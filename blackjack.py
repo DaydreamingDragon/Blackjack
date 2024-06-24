@@ -6,7 +6,7 @@ bettingMoney = 0
 playerTotal = 0
 dealerTotal = 0
 
-while True:
+while True: # Loops untiil player says they don't want to continue
     print(f"Welcome to blackjack.  You currently have ${playerMoney}.")
     bettingMoney = 0
     playerTotal = 0
@@ -14,6 +14,7 @@ while True:
     deck = cards
     time.sleep(1)
 
+    # Get amount player wants to bet
     while True:
         bet = input(f"How much would you like to bet? You have {playerMoney}: ")
         try:
@@ -26,6 +27,7 @@ while True:
         except ValueError:
             print("Please put an integer amount of money!")
 
+    # Initial two cards for dealer and player
     i = 1
     while i <= 2:
         time.sleep(1)
@@ -47,6 +49,7 @@ while True:
         i += 1
         time.sleep(1)
 
+    # If 21 is achieved on first two cards
     if playerTotal == 21 and dealerTotal != 21:
         playerMoney += bettingMoney
         print(f"You win!  Your total is now: ${playerMoney}")
@@ -61,6 +64,7 @@ while True:
 
     print(f"Once again, your total is {playerTotal}")
 
+    # Player hitting or standing
     while playerTotal <= 21:
         while True:
             hitOrStand = input("Would you like to hit or stand?: ")
@@ -78,6 +82,7 @@ while True:
             print(f"You stood.  Your total is: {playerTotal}")
             break
 
+    # If player busts
     if playerTotal > 21:
         print(f"You busted!  You lost: {bettingMoney}")
         playerMoney -= bettingMoney
@@ -85,12 +90,14 @@ while True:
 
     print(f"The dealer flips over their second card.  It's a {dealerCard}.")
 
+    # Dealer drawing cards and hitting/standing
     while dealerTotal <= 18:
         dealerCard = drawCard(deck)
         print(f"The dealer draws another card.  It's a {dealerCard}! The dealer's total is now {dealerTotal}. ")
         dealerTotal += calculateValue(dealerCard, dealerTotal)
         time.sleep(1)
 
+    # If dealer gets 21 or busts
     if dealerTotal == 21:
         playerMoney -= bettingMoney
         print(f"You lost! Your balance is now: ${playerMoney}")
@@ -102,9 +109,11 @@ while True:
         print(f"You won! Your balance is now: ${playerMoney}")
         keepGoing(playerMoney)
 
+    # If dealer total is below 21.  Dealer will not hit if their total is above 18
     print(f"The dealer chooses to stand.  Their total is {dealerTotal}.")
     time.sleep(1)
 
+    # If both dealer and player stand before getting 21
     if playerTotal == dealerTotal:
         print(f"You tied!  Your bet has been returned.")
         keepGoing(playerMoney)
