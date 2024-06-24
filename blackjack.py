@@ -55,7 +55,7 @@ while True:
             quit()
     elif playerTotal < 21 and dealerTotal == 21:
         playerMoney -= bettingMoney
-        print(f"You lost!  Your total is now: ${playerMoney}")
+        print(f"You lost!  The dealer's second card was {dealerCard}.  Your total is now: ${playerMoney}")
         if keepGoing() == False:
             print(f"Session ended. You walked away with: ${playerMoney}")
             quit()
