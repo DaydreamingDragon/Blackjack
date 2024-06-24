@@ -31,11 +31,10 @@ def drawCard(deck):
     card = random.randint(0, (len(deck) - 1))
     return deck[card]
 
-def keepGoing():
+def keepGoing(money):
     while True:
         decision = input("Would you like to play again?  Type 1 for yes and 0 for no: ")
-        if decision == 1:
-            return True
-        elif decision == 0:
-            return False
+        if decision == 0:
+            print(f"Session ended.  You walked away with: {money}")
+            quit()
     
