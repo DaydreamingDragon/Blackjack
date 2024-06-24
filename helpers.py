@@ -33,8 +33,8 @@ def drawCard(deck):
 
 def keepGoing(money):
     while True:
-        decision = input("Would you like to play again?  Type 1 for yes and 0 for no: ")
-        if decision == 0:
+        decision = input("Would you like to play again?  Type n for no and anything else for yes: ")
+        if decision == "n":
             print(f"Session ended.  You walked away with: {money}")
             quit()
     
