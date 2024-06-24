@@ -1,3 +1,5 @@
+import random
+
 cards = ["ace", "ace", "ace", "ace",
          "king", "king", "king", "king",
          "queen", "queen", "queen", "queen",
@@ -24,4 +26,8 @@ def calculateValue(card, total):
         return 10
     else: 
         return card
+
+def drawCard(deck):
+    card = random.randint(0, (len(deck) - 1))
+    return deck[card]
     
