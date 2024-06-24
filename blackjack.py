@@ -58,6 +58,7 @@ while playerTotal <= 21:
         deck.remove(playerCard)
     else:
         print(f"You stood.  Your total is: {playerTotal}")
+        break
 
 if playerTotal > 21:
     print(f"You busted!  You lost: {bettingMoney}")
