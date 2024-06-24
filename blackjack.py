@@ -89,12 +89,30 @@ while True:
         dealerCard = drawCard(deck)
         print(f"The dealer draws another card.  It's a {dealerCard}! The dealer's total is now {dealerTotal}. ")
         dealerTotal += calculateValue(dealerCard, dealerTotal)
+        time.sleep(1)
 
     if dealerTotal == 21:
         playerMoney -= bettingMoney
         print(f"You lost! Your balance is now: ${playerMoney}")
         keepGoing(playerMoney)
     elif dealerTotal > 21:
+        print("The dealer busts!")
         playerMoney += bettingMoney
+        time.sleep(0.5)
         print(f"You won! Your balance is now: ${playerMoney}")
+        keepGoing(playerMoney)
+
+    print(f"The dealer chooses to stand.  Their total is {dealerTotal}.")
+    time.sleep(1)
+
+    if playerTotal == dealerTotal:
+        print(f"You tied!  Your bet has been returned.")
+        keepGoing(playerMoney)
+    elif playerTotal > dealerTotal:
+        playerMoney += bettingMoney
+        print(f"You won!  Your balance is now: {playerMoney}")
+        keepGoing(playerMoney)
+    elif playerTotal < dealerTotal:
+        playerMoney -= bettingMoney
+        print(f"You lost!  Your balance is now: {playerMoney}")
         keepGoing(playerMoney)
