@@ -88,6 +88,7 @@ while True: # Loops untiil player says they don't want to continue
         print(f"You busted!  You lost: {bettingMoney}")
         playerMoney -= bettingMoney
         print(f"Your balance is now: ${playerMoney}.")
+        keepGoing(playerMoney)
 
     time.sleep(1)
     print(f"The dealer flips over their second card.  It's a {dealerCard}.")
