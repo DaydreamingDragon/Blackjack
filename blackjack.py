@@ -54,13 +54,16 @@ while True: # Loops untiil player says they don't want to continue
         playerMoney += bettingMoney
         print(f"You win!  Your total is now: ${playerMoney}")
         keepGoing(playerMoney)
+        continue
     elif playerTotal < 21 and dealerTotal == 21:
         playerMoney -= bettingMoney
         print(f"You lost!  The dealer's second card was {dealerCard}.  Your total is now: ${playerMoney}")
         keepGoing(playerMoney)
+        continue
     elif playerTotal == 21 and dealerTotal == 21:
         print(f"You and the dealer both got 21!  The dealer's second card was {dealerCard}.  Your bet was returned.")
         keepGoing(playerMoney)
+        continue
 
     print(f"Once again, your total is {playerTotal}")
     time.sleep(1)
@@ -91,10 +94,12 @@ while True: # Loops untiil player says they don't want to continue
         playerMoney -= bettingMoney
         print(f"Your balance is now: ${playerMoney}.")
         keepGoing(playerMoney)
+        continue
     elif playerTotal == 21:
         playerMoney += bettingMoney
         print(f"You won!  Your balance is now: ${playerMoney}")
         keepGoing(playerMoney)
+        continue
 
     time.sleep(1)
     print(f"The dealer flips over their second card.  It's a {dealerCard}.")
@@ -111,12 +116,14 @@ while True: # Loops untiil player says they don't want to continue
         playerMoney -= bettingMoney
         print(f"You lost! Your balance is now: ${playerMoney}")
         keepGoing(playerMoney)
+        continue
     elif dealerTotal > 21:
         print("The dealer busts!")
         playerMoney += bettingMoney
         time.sleep(1)
         print(f"You won! Your balance is now: ${playerMoney}")
         keepGoing(playerMoney)
+        continue
 
     # If dealer total is below 21.  Dealer will not hit if their total is above 18
     print(f"The dealer chooses to stand.  Their total is {dealerTotal}.")
@@ -126,11 +133,14 @@ while True: # Loops untiil player says they don't want to continue
     if playerTotal == dealerTotal:
         print(f"You tied!  Your bet has been returned.")
         keepGoing(playerMoney)
+        continue
     elif playerTotal > dealerTotal:
         playerMoney += bettingMoney
         print(f"You won!  Your balance is now: {playerMoney}")
         keepGoing(playerMoney)
+        continue
     elif playerTotal < dealerTotal:
         playerMoney -= bettingMoney
         print(f"You lost!  Your balance is now: {playerMoney}")
         keepGoing(playerMoney)
+        continue
