@@ -2,11 +2,6 @@ from helpers import cards, drawCard, calculateValue, keepGoing
 import time
 
 playerMoney = 100
-bettingMoney = 0
-playerTotal = 0
-dealerTotal = 0
-playerAces = 0
-dealerAces = 0
 
 while True: # Loops untiil player says they don't want to continue
     time.sleep(1)
@@ -17,6 +12,8 @@ while True: # Loops untiil player says they don't want to continue
     bettingMoney = 0
     playerTotal = 0
     dealerTotal = 0
+    playerAces = 0
+    dealerAces = 0
     deck = cards
     time.sleep(1)
 
