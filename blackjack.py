@@ -63,6 +63,7 @@ while True: # Loops untiil player says they don't want to continue
         keepGoing(playerMoney)
 
     print(f"Once again, your total is {playerTotal}")
+    time.sleep(1)
 
     # Player hitting or standing
     while playerTotal <= 21:
@@ -88,13 +89,14 @@ while True: # Loops untiil player says they don't want to continue
         playerMoney -= bettingMoney
         print(f"Your balance is now: ${playerMoney}.")
 
+    time.sleep(1)
     print(f"The dealer flips over their second card.  It's a {dealerCard}.")
-
+    time.sleep(1)
     # Dealer drawing cards and hitting/standing
     while dealerTotal <= 18:
         dealerCard = drawCard(deck)
-        print(f"The dealer draws another card.  It's a {dealerCard}! The dealer's total is now {dealerTotal}. ")
         dealerTotal += calculateValue(dealerCard, dealerTotal)
+        print(f"The dealer draws another card.  It's a {dealerCard}! The dealer's total is now {dealerTotal}. ")
         time.sleep(1)
 
     # If dealer gets 21 or busts
@@ -105,7 +107,7 @@ while True: # Loops untiil player says they don't want to continue
     elif dealerTotal > 21:
         print("The dealer busts!")
         playerMoney += bettingMoney
-        time.sleep(0.5)
+        time.sleep(1)
         print(f"You won! Your balance is now: ${playerMoney}")
         keepGoing(playerMoney)
 
