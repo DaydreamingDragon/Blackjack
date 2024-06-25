@@ -76,8 +76,10 @@ while True: # Loops untiil player says they don't want to continue
         if hitOrStand == "hit":
             playerCard = drawCard(deck)
             print(f"You hit.  You draw a {playerCard}.")
+            time.sleep(1)
             playerTotal += calculateValue(playerCard, playerTotal)
             print(f"Your total is now: {playerTotal}.")
+            time.sleep(1)
             deck.remove(playerCard)
         else:
             print(f"You stood.  Your total is: {playerTotal}")

@@ -41,4 +41,5 @@ def keepGoing(money):
         if decision == "n":
             print(f"Session ended.  You walked away with: {money}")
             quit()
+        break
     
