@@ -5,6 +5,8 @@ playerMoney = 100
 bettingMoney = 0
 playerTotal = 0
 dealerTotal = 0
+playerAces = 0
+dealerAces = 0
 
 while True: # Loops untiil player says they don't want to continue
     print(f"Welcome to blackjack.  You currently have ${playerMoney}.")
@@ -36,11 +38,15 @@ while True: # Loops untiil player says they don't want to continue
         playerTotal += calculateValue(playerCard, playerTotal)
         deck.remove(playerCard)
         print(f"You drew a(n) {playerCard}.  Your total is: {playerTotal}")
+        if playerCard == "ace" and playerAces == 0:
+            playerAces += 1
         time.sleep(1)
 
         dealerCard = drawCard(deck)
         dealerTotal += calculateValue(dealerCard, dealerTotal)
         deck.remove(dealerCard)
+        if dealerCard == "ace" and dealerAces == 0:
+            dealerAces += 1
         if i == 1:
             print(f"The dealer draws a(n) {dealerCard}.  The dealer's total is: {dealerTotal}.")
         else: 
@@ -81,6 +87,9 @@ while True: # Loops untiil player says they don't want to continue
             print(f"You hit.  You draw a {playerCard}.")
             time.sleep(1)
             playerTotal += calculateValue(playerCard, playerTotal)
+            if playerTotal > 21 and playerAces > 0:
+                playerTotal -= 10
+                playerAces -= 1
             print(f"Your total is now: {playerTotal}.")
             time.sleep(1)
             deck.remove(playerCard)
@@ -88,6 +97,7 @@ while True: # Loops untiil player says they don't want to continue
             print(f"You stood.  Your total is: {playerTotal}")
             break
 
+    
     # If player busts or gets 21
     if playerTotal > 21:
         print(f"You busted!  You lost: ${bettingMoney}")
@@ -108,6 +118,9 @@ while True: # Loops untiil player says they don't want to continue
     while dealerTotal <= 18:
         dealerCard = drawCard(deck)
         dealerTotal += calculateValue(dealerCard, dealerTotal)
+        if dealerTotal > 21 and dealerAces > 0:
+                dealerTotal -= 10
+                dealerAces -= 1
         print(f"The dealer draws another card.  It's a {dealerCard}! The dealer's total is now {dealerTotal}. ")
         time.sleep(1)
 
