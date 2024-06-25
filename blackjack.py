@@ -9,6 +9,10 @@ playerAces = 0
 dealerAces = 0
 
 while True: # Loops untiil player says they don't want to continue
+    time.sleep(1)
+    if playerMoney == 0:
+        print("You lost all your money!  Game over.")
+        quit()
     print(f"Welcome to blackjack.  You currently have ${playerMoney}.")
     bettingMoney = 0
     playerTotal = 0
