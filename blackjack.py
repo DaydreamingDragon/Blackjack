@@ -66,7 +66,7 @@ while True: # Loops untiil player says they don't want to continue
     time.sleep(1)
 
     # Player hitting or standing
-    while playerTotal <= 21:
+    while playerTotal < 21:
         while True:
             hitOrStand = input("Would you like to hit or stand?: ")
             if hitOrStand == "hit" or hitOrStand == "stand":
@@ -83,11 +83,15 @@ while True: # Loops untiil player says they don't want to continue
             print(f"You stood.  Your total is: {playerTotal}")
             break
 
-    # If player busts
+    # If player busts or gets 21
     if playerTotal > 21:
-        print(f"You busted!  You lost: {bettingMoney}")
+        print(f"You busted!  You lost: ${bettingMoney}")
         playerMoney -= bettingMoney
         print(f"Your balance is now: ${playerMoney}.")
+        keepGoing(playerMoney)
+    elif playerTotal == 21:
+        playerMoney += bettingMoney
+        print(f"You won!  Your balance is now: ${playerMoney}")
         keepGoing(playerMoney)
 
     time.sleep(1)
